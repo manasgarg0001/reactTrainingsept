@@ -40,6 +40,7 @@ const Login = () => {
     user: currentLoggedInUser,
     isLoading,
   } = useGetUserById();
+  const Navigate = useNavigate();
   // console.log(currentLoggedInUser, "currentLoggedInUser");
   // const handleClick = () => {
   //   setOpen(true);
@@ -114,6 +115,8 @@ const Login = () => {
         // The signed-in user info.
         const user = result.user;
         LocalStorageService.setCurrentUser(user);
+        LocalStorageService.setToken(true);
+        Navigate("/");
         // ...
       })
       .catch((error) => {
@@ -127,7 +130,7 @@ const Login = () => {
         // ...
       });
   }
-  const Navigate = useNavigate();
+
   return (
     <>
       <Grid container sx={{ height: "100vh" }}>

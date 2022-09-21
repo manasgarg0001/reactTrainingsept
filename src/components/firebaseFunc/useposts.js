@@ -23,7 +23,7 @@ export const useUploadPost = () => {
         .then((url) => {
           setDoc(doc(postRef), {
             ...payload,
-            uploadFile: url,
+            uploadFile: payload.uploadFile ? url : null,
           });
           setIsSuccess(true);
         })
