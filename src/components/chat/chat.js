@@ -1,12 +1,22 @@
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 import { urlAlphabet } from "nanoid";
-export const Chat = () => {
+
+export const Chat = (props) => {
+  const [text, setText] = useState("");
+  const handleSubmit = () => {
+    setText(text);
+    {
+      props.msg(text);
+    }
+    console.log(text);
+  };
+
   return (
     <Box
       sx={{
@@ -19,8 +29,9 @@ export const Chat = () => {
     >
       <TextField
         fullWidth
+        value={text}
+        onChange={(e) => setText(e.target.value)}
         id="outlined-basic"
-        //label="Outlined"
         variant="outlined"
         size="large"
         InputProps={{
@@ -32,6 +43,7 @@ export const Chat = () => {
 
                 <Button
                   variant="outlined"
+                  onClick={handleSubmit}
                   sx={{ backgroundColor: "blue", color: "white" }}
                 >
                   Send

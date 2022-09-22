@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -6,25 +6,34 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-
+import img1 from "../assets/img.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Avatar } from "@mui/material";
+import { Avatar, InputAdornment, TextField } from "@mui/material";
 import { Chat } from "../components/chat/chat";
+import SearchIcon from "@mui/icons-material/Search";
+import { Messages } from "../components/chat/messages";
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import bgimg from "../assets/bg.jpg";
+
 const drawerWidth = 240;
 
 function Messenger(props) {
+  const [msg, setMsg] = useState("");
+  const sendMsg = (data) => {
+    setMsg(data);
+  };
+  console.log(msg);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -35,25 +44,54 @@ function Messenger(props) {
   const drawer = (
     <>
       <Box>
-        <Toolbar />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            backgroundColor: "blue",
+          }}
+        >
+          <Toolbar />
+          <QuestionAnswerIcon sx={{ color: "white" }} />
+          <Typography variant="h6" color="white" fontWeight="bold">
+            Chats
+          </Typography>
+        </Box>
+        <Box>
+          <TextField
+            size="small"
+            borderRadius="50px"
+            variant="outlined"
+            placeholder="search"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <IconButton component="label">
+                    <SearchIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              padding: "5px",
+              ".MuiInputBase-root": {
+                borderRadius: "50px",
+              },
+            }}
+          ></TextField>
+        </Box>
         <Divider />
         <List>
-          {["Jane", "Tyler", "Sandy", "Halsey", "Ashley"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-
-                  {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-          {/* </List> */}
-          {/* <Divider /> */}
-          {/* <List> */}
-          {["Manas", "Mohit", "Manu"].map((text, index) => (
+          {[
+            "Jane",
+            "Tyler",
+            "Sandy",
+            "Halsey",
+            "Ashley",
+            "Manas",
+            "Mohit",
+            "Manu",
+          ].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -99,14 +137,19 @@ function Messenger(props) {
             >
               <MenuIcon />
             </IconButton>
+            <Avatar src={img1} />
             <Typography
               variant="h6"
               noWrap
               component="div"
-              sx={{ display: "flex", flexGrow: "1" }}
+              sx={{ display: "flex", flexGrow: "1", fontWeight: "bold" }}
             >
-              Tyler
+              Manas Garg
+              <Box>
+                <FiberManualRecordIcon color="success" fontSize="small" />
+              </Box>
             </Typography>
+
             <Box sx={{ display: "flex", gap: "10px" }}>
               <Box>
                 <VideocamIcon />
@@ -153,7 +196,7 @@ function Messenger(props) {
               boxSizing: "border-box",
               width: drawerWidth,
               ml: "60px",
-              mt: "65px",
+              mt: "64px",
             },
           }}
           open
@@ -178,10 +221,25 @@ function Messenger(props) {
             backgroundImage: `url(${bgimg})`,
           }}
         >
+          <Box
+            sx={{
+              marginTop: "80px",
+            }}
+          >
+            <Messages a1={msg} />
+            <Messages />
+            <Messages />
+            <Messages />
+            <Messages />
+            <Messages />
+            <Messages />
+            <Messages />
+          </Box>
           <Toolbar />
         </Box>
+
         <Box>
-          <Chat />
+          <Chat msg={sendMsg} />
         </Box>
       </Box>
     </Box>

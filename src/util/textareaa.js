@@ -25,21 +25,6 @@ export default function FullWidthTextField(props) {
   const currentUser = LocalStorageService.getCurrentUser();
   const { uploadPost, isLoading, isSuccess } = useUploadPost();
   const auth = getAuth();
-  // const user = auth.currentUser;
-  // const {
-  //   getUserById,
-  //   user: currentUserInfo,
-  //   isloading: getUserLoading,
-  // } = getUserById();
-  // useEffect(() => {
-  //   const user = auth.currentUser;
-  //   console.log(user?.uid, "useerr");
-
-  //   if (user) {
-  //     const uid = user?.uid;
-  //     getUserById(uid);
-  //   }
-  // }, []);
 
   const { getPosts } = useGetPosts();
 
