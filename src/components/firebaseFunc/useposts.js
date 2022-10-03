@@ -14,7 +14,7 @@ export const useUploadPost = () => {
       url = payload.uploadFile;
     } else {
       const ImageResponse = await fetch(payload.uploadFile);
-      url = await ImageResponse.blob();
+      url = payload.uploadFile;
     }
 
     const storageRef = ref(storage, `post/${nanoid()}`);

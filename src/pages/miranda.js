@@ -17,8 +17,11 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import iconimage from "../assets/Group48.png";
 import cardimg from "../assets/mirandaimg.png";
 import { Badge, Box, InputAdornment } from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
+import { useState } from "react";
+
 export default function Miranda() {
-  const [count, setCount] = React.useState(1);
+  const [count, setCount] = useState(1);
   return (
     <Card sx={{ width: "100%", maxWidth: "100%", borderRadius: "8px" }}>
       <Box sx={{ display: "flex" }}>
@@ -28,13 +31,6 @@ export default function Miranda() {
               <img src={mirandaimg} />
             </Avatar>
           }
-          // action={
-          //   <IconButton aria-label="settings">
-          //     <MoreHorizIcon />
-          //   </IconButton>
-          // }
-          // title="Miranda Shaffer"
-          // subheader="june 21,12:45"
         />
         <Box sx={{ alignSelf: "center", flexGrow: 1 }}>
           <Typography
@@ -85,8 +81,18 @@ export default function Miranda() {
             />
           </Badge>
           <Badge color="primary" badgeContent={4}>
-            <ChatIcon sx={{ color: "#788292" }} />
+            <ExpandMore
+              expand={expanded}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <IconButton>
+                <ChatIcon sx={{ color: "#788292" }} />
+              </IconButton>
+            </ExpandMore>
           </Badge>
+
           <IconButton aria-label="share">
             <ShareIcon sx={{ color: "#788292" }} />
           </IconButton>

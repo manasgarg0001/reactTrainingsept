@@ -2,12 +2,9 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
-
 import Avatar from "@mui/material/Avatar";
-
 import Typography from "@mui/material/Typography";
 import { blue } from "@mui/material/colors";
-
 import storyimg from "../assets/Rectangle.png";
 import storyimg1 from "../assets/MaskGroup.png";
 import storyimg2 from "../assets/Rectangle2.png";
@@ -19,31 +16,16 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 const Stories = (props) => {
   return (
     <>
-      {/* <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography
-          variant="h5"
-          gutterBottom
-          sx={{
-            fontWeight: "bold",
-            padding: "10px",
-            lineHeight: "21px",
-            color: "#203758",
-            display: "flex",
-            //flexGrow: 10,
-          }}
-        >
-          Stories
-        </Typography>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <MoreHorizIcon sx={{ color: "#788292" }} />
-        </Box>
-      </Box> */}
       <Box
         sx={{
           display: "flex",
+          flexWrap: "wrap",
           gap: "10px",
           marginLeft: "10px",
           padding: "5px",
+          "&:hover": {
+            backgroundColor: "rgb(7, 177, 77, 0.42)",
+          },
         }}
       >
         <Card

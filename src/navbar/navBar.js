@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import firebaseConfig from "../firebase";
 import LocalStorageService from "../util/localStorageService";
+import { useSelector } from "react-redux";
 const auth = getAuth();
 
 // const pages = [
@@ -75,6 +76,7 @@ const ResponsiveAppBar = () => {
         // An error happened.
       });
   };
+  // const user = useSelector((state) => state.user.userData);
   return (
     <AppBar position="relative" sx={{ backgroundColor: "white" }}>
       <Container maxWidth={false}>
@@ -157,6 +159,8 @@ const ResponsiveAppBar = () => {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src={img} />
+                {/* <div>{user.name}</div>
+                <div>{user.email}</div> */}
               </IconButton>
             </Tooltip>
             <Menu

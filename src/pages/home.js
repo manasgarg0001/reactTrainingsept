@@ -12,7 +12,6 @@ import VideoCallIcon from "@mui/icons-material/VideoCall";
 import { Box } from "@mui/system";
 import AlignItemsList from "./contactlist";
 import FullWidthTextField from "../util/textareaa";
-
 import Stories from "./stories";
 import WatchingPeople from "./watchingpeople";
 import WhoToFollow from "./follow";
@@ -21,10 +20,7 @@ import img2 from "../assets/headimg2.png";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import storyimg from "../assets/Rectangle.png";
 import substory from "../assets/Group.png";
-import iconimage from "../assets/Group48.png";
-import cardimg from "../assets/mirandaimg.png";
 import Posts from "../components/posts/posts";
-import Avatar2 from "../assets/miranda.png";
 import storyimg1 from "../assets/MaskGroup.png";
 import storyimg2 from "../assets/Rectangle2.png";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -155,8 +151,8 @@ const Home = () => {
                       key={index}
                       url={item.uploadFile}
                       text={item.content}
-                      avatar={item.avatar}
-                      name={item.user.firstName}
+                      avatar={item.user?.photoURL}
+                      name={item.user?.firstName || item.user?.displayName}
                       time={item.createdAt}
                     />
                   </Box>
