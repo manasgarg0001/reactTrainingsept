@@ -76,7 +76,6 @@ export default function FullWidthTextField(props) {
           <Box sx={{ display: "flex", backgroundColor: "white" }}>
             <TextField
               fullWidth
-              //onChange={props.handleChange}
               value={postText}
               onChange={(e) => setPostText(e.target.value)}
               name="text"
@@ -84,31 +83,6 @@ export default function FullWidthTextField(props) {
               placeholder="whats on your mind paul?"
             />
             <Box>
-              {/* <TextField
-                name="url"
-                fullWidth
-                sx={{
-                  display: "flex",
-                  color: "#788292",
-                  fontFamily: "Montserrat",
-                  fontSize: "15px",
-                }}
-                id="fullWidth"
-                value={image}
-                onChange={(e) => setImage(e.target.files[0])}
-                placeholder="add Image/Status"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="End">
-                      <IconButton component="label">
-                        <input type="file" hidden />
-                        <CollectionsIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              /> */}
-
               <TextField
                 name="url"
                 fullWidth
@@ -137,7 +111,10 @@ export default function FullWidthTextField(props) {
           }}
         >
           <VideocamIcon sx={{ color: "red" }} />
-          <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: "bold", cursor: "pointer" }}
+          >
             Live
           </Typography>
           <Button
@@ -156,7 +133,10 @@ export default function FullWidthTextField(props) {
             image/file
           </Typography> */}
 
-          <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: "bold", cursor: "pointer" }}
+          >
             Games
           </Typography>
           <SportsEsportsIcon />

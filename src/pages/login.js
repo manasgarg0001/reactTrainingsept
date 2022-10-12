@@ -335,8 +335,6 @@ const Login = () => {
                       <Button
                         variant="contained"
                         type="submit"
-                        // onClick={() => Navigate("/")}
-                        // onClick={handleClick}
                         sx={{
                           justifyContent: "center",
                           alignItems: "center",
@@ -351,7 +349,7 @@ const Login = () => {
                         LogIn
                       </Button>
                     )}
-                    {/* {error.type === "success" ? ( */}
+
                     <Snackbar
                       open={open}
                       autoHideDuration={6000}
@@ -365,21 +363,7 @@ const Login = () => {
                         {error?.message}
                       </Alert>
                     </Snackbar>
-                    {/* ) : (
-                      <Snackbar
-                        open={open}
-                        autoHideDuration={6000}
-                        onClose={handleClose}
-                      >
-                        <Alert
-                          onClose={handleClose}
-                          severity="error"
-                          sx={{ width: "100%" }}
-                        >
-                          This is an error message!
-                        </Alert>
-                      </Snackbar>
-                    )} */}
+
                     <Box sx={{ my: 10 }}>
                       <Typography
                         variant="h6"

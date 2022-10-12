@@ -12,13 +12,17 @@ export const Messages = (props) => {
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          padding: "10px",
+          padding: "5px",
           alignItems: "center",
         }}
       >
         <Typography
           variant="h6"
-          sx={{ backgroundColor: "aliceblue", padding: "5px" }}
+          sx={{
+            backgroundColor: "#d3e1e4de",
+            padding: "5px",
+            cursor: "pointer",
+          }}
         >
           {props.a1}
         </Typography>
@@ -30,11 +34,18 @@ export const Messages = (props) => {
         sx={{
           display: "flex",
           justifyContent: "flex-start",
-          padding: "10px",
+          padding: "5px",
           alignItems: "center",
         }}
       >
-        <Typography variant="h6" sx={{ backgroundColor: "aliceblue" }}>
+        <Typography
+          variant="h6"
+          sx={{
+            backgroundColor: "gray",
+            padding: "5px",
+            cursor: "pointer",
+          }}
+        >
           {props.a1}
         </Typography>
       </Box>

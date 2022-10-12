@@ -24,7 +24,12 @@ export default function WhoToFollow() {
           </Box>
         </Box>
         <List
-          sx={{ width: "100%", bgcolor: "background.paper", marginTop: "10px" }}
+          sx={{
+            width: "100%",
+            bgcolor: "background.paper",
+            marginTop: "10px",
+            justifyContent: "center",
+          }}
         >
           <ListItem alignItems="flex-start" sx={{ flexWrap: "wrap" }}>
             <ListItemAvatar>
@@ -72,7 +77,10 @@ export default function WhoToFollow() {
             </Box>
           </ListItem>
           <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start" sx={{ flexWrap: "wrap" }}>
+          <ListItem
+            alignItems="flex-start"
+            sx={{ flexWrap: "wrap", justifyContent: "center" }}
+          >
             <ListItemAvatar>
               <Avatar alt="Travis Howard" src={followimg} />
             </ListItemAvatar>

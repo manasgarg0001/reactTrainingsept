@@ -27,7 +27,6 @@ import {
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-
 import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
@@ -106,18 +105,23 @@ export default function Posts(props) {
     setData([...data, addComment]);
     setComments("");
   }
-  console.log("data is", data);
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      setComments(event.target.value);
+      handleSubmit();
+    }
+  };
 
-  useEffect(() => {
-    dispatch(
-      updateUser({
-        name: "manas",
-        email: "manas@gmail.com",
-        gender: "male",
-        age: 30,
-      })
-    );
-  }, []);
+  // useEffect(() => {
+  //   dispatch(
+  //     updateUser({
+  //       name: "firstName",
+  //       email: "manas@gmail.com",
+  //       gender: "male",
+  //       age: 30,
+  //     })
+  //   );
+  // }, []);
 
   const { uploadPost, isLoading, isSuccess } = useUploadPost();
   // const countt = useSelector((state) => state.counter.value);
@@ -125,9 +129,6 @@ export default function Posts(props) {
     alert(JSON.stringify(post, null, 2));
     console.log(post, "postss");
   }
-  // const [showMore, setShowMore] = React.useState(false);
-  // const handleOpen = () => setShowMore(true);
-  // const handleCloseComment = () => setShowMore(false);
 
   //dialog code for show more
   const [opencmnt, setOpencmnt] = React.useState(false);
@@ -427,70 +428,6 @@ export default function Posts(props) {
                   </Button>
                 </DialogActions>
               </Dialog>
-
-              {/* <Box>
-                <Modal
-                  open={showMore}
-                  onClose={handleCloseComment}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      width: 400,
-                      bgcolor: "background.paper",
-                      border: "0px solid #000",
-                      borderRadius: "20px",
-                      boxShadow: 24,
-                      p: 2,
-                      height: "400px",
-                      overflow: "scroll",
-                      "::-webkit-scrollbar": {
-                        display: "none",
-                      },
-                    }}
-                  >
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                      {data.map((item, index) => (
-                        <>
-                          <Box sx={{ display: "flex" }}>
-                            <Box sx={{ alignSelf: "center" }}>
-                              <Avatar
-                                alt="Remy Sharp"
-                                src="/static/images/avatar/1.jpg"
-                              />
-                            </Box>
-                            <Box
-                              key={index}
-                              sx={{
-                                border: "0px solid black",
-                                borderRadius: "20px",
-                                padding: "10px",
-                                backgroundColor: "aliceblue",
-                                width: "100%",
-                              }}
-                            >
-                              <Typography variant="body1" fontWeight="bold">
-                                {item.commentName}
-                              </Typography>
-                              <Typography
-                                variant="body1"
-                                sx={{ alignSelf: "center" }}
-                              >
-                                {item.displayComment}
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </>
-                      ))}
-                    </Typography>
-                  </Box>
-                </Modal>
-              </Box> */}
             </Box>
             <Box sx={{ textAlign: "center" }}>
               <Typography
@@ -514,6 +451,7 @@ export default function Posts(props) {
               placeholder="type your comment here"
               value={comments}
               onChange={(e) => setComments(e.target.value)}
+              onKeyPress={handleKeyPress}
               variant="outlined"
               InputProps={{
                 endAdornment: (

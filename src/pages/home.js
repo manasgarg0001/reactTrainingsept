@@ -17,7 +17,6 @@ import WatchingPeople from "./watchingpeople";
 import WhoToFollow from "./follow";
 import img from "../assets/headimg.png";
 import img2 from "../assets/headimg2.png";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import storyimg from "../assets/Rectangle.png";
 import substory from "../assets/Group.png";
 import Posts from "../components/posts/posts";
@@ -73,8 +72,9 @@ const Home = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "center",
-                  padding: "15px",
+                  padding: { sm: "5px", md: "15px" },
                   gap: "15px",
+                  flexWrap: "wrap",
                 }}
               >
                 <Button
@@ -158,34 +158,6 @@ const Home = () => {
                   </Box>
                 ))}
               </Box>
-
-              {/* <Box
-                sx={{
-                  marginTop: "7px",
-                  padding: "5px",
-                }}
-              >
-                <Posts
-                  addData={data}
-                  name="Ben Thomas"
-                  time="45 min ago"
-                  //img={cardimg}
-                  avatar={iconimage}
-                  //status="Being a father is sometimes my hardest but always my most rewarding job. Happy Father’s Day to all dads out there. "
-                />
-              </Box>
-              <Box sx={{ marginTop: "7px", padding: "5px" }}>
-                <Posts
-                  name="Miranda Shaffer"
-                  time="june 21,12:45pm"
-                  img={cardimg}
-                  avatar={Avatar2}
-                  status="Having fun while cooking and eating variety of foods with @Sarah"
-                />
-              </Box>
-              <Box sx={{ marginTop: "7px", padding: "5px" }}>
-                <Posts name="David Cox" time="june 11,11:30pm" img={cardimg} />
-              </Box> */}
             </Box>
           </Grid>
 
@@ -208,7 +180,13 @@ const Home = () => {
                 <MoreHorizIcon sx={{ color: "#788292" }} />
               </Box>
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+              }}
+            >
               <Box>
                 <Stories
                   name="kierra centrary"

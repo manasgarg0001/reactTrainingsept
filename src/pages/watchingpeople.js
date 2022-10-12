@@ -24,6 +24,7 @@ export default function WatchingPeople() {
         display: "flex",
         gap: "20px",
         marginLeft: "10px",
+        flexWrap: "wrap",
       }}
     >
       <Card

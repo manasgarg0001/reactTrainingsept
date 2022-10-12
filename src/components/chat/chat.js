@@ -1,7 +1,6 @@
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import SendIcon from "@mui/icons-material/Send";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 
@@ -14,7 +13,14 @@ export const Chat = (props) => {
     {
       props.msg(text);
     }
-    console.log(text);
+    setText("");
+  };
+
+  const handleKeyEnter = (event) => {
+    if (event.key === "Enter") {
+      setText(event.target.value);
+      handleSubmit();
+    }
   };
 
   return (
@@ -31,6 +37,7 @@ export const Chat = (props) => {
         fullWidth
         value={text}
         onChange={(e) => setText(e.target.value)}
+        onKeyPress={handleKeyEnter}
         id="outlined-basic"
         variant="outlined"
         size="large"
@@ -43,7 +50,9 @@ export const Chat = (props) => {
 
                 <Button
                   variant="outlined"
-                  onClick={handleSubmit}
+                  onClick={() => {
+                    handleSubmit();
+                  }}
                   sx={{ backgroundColor: "blue", color: "white" }}
                 >
                   Send

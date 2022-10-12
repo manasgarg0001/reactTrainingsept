@@ -5,13 +5,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import img1 from "../assets/img.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -126,12 +124,10 @@ function Messenger(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const [search, setSearch] = useState({});
+  const [search, setSearch] = useState("");
+
   console.log(search);
-  const addSearch = () => {
-    setSearch({ search });
-  };
-  console.log(addSearch);
+
   const [onlineUser, setOnlineUser] = useState({});
 
   const drawer = (
@@ -161,7 +157,7 @@ function Messenger(props) {
               endAdornment: (
                 <InputAdornment position="start">
                   <IconButton component="label">
-                    <SearchIcon onClick={addSearch} />
+                    <SearchIcon />
                   </IconButton>
                 </InputAdornment>
               ),
@@ -176,91 +172,44 @@ function Messenger(props) {
         </Box>
         <Divider />
         <List>
-          {
-            // [
-            //   {
-            //     name: "Jane",
-            //     id: "1",
-            //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEBx9Wr0-Vrvo7-X_EwAXnCxBrBODj3sjPLE_6DZPA&s",
-            //     status: true,
-            //   },
-            //   {
-            //     name: "Tyler",
-            //     id: "2",
-            //     img: "https://images.ctfassets.net/hrltx12pl8hq/a2hkMAaruSQ8haQZ4rBL9/8ff4a6f289b9ca3f4e6474f29793a74a/nature-image-for-website.jpg?fit=fill&w=480&h=320",
-            //     status: true,
-            //   },
-            //   {
-            //     name: "Sandy",
-            //     id: "3",
-            //     img: "https://image.shutterstock.com/image-photo/boats-on-braies-lake-pragser-260nw-1499847638.jpg",
-            //     status: true,
-            //   },
-            //   {
-            //     name: "Halsey",
-            //     id: "4",
-            //     img: "https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000",
-            //     status: true,
-            //   },
-            //   {
-            //     name: "Ashley",
-            //     id: "5",
-            //     img: "https://cdn.searchenginejournal.com/wp-content/uploads/2022/04/reverse-image-search-627b7e49986b0-sej-760x400.png",
-            //     status: true,
-            //   },
-            //   {
-            //     name: " Manas",
-            //     id: "6",
-            //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv7fq3Uvk0xGsMHmKMd3NG1zPkTivPLgDiI6ih-EjECX3JLau1G8W3rNGfhE70i5-BxVo&usqp=CAU",
-            //     status: false,
-            //   },
-            //   {
-            //     name: " Mohit",
-            //     id: "7",
-            //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpiV6MdNLlMbXVoW_CXzYA70zJ7KgFhP4y8_QtOEL9ZuksPsDV_-0RYHDiZDtPRgUUyYE&usqp=CAU",
-            //     status: true,
-            //   },
-            //   {
-            //     name: "Manu",
-            //     id: "8",
-            //     img: "https://media.istockphoto.com/photos/mountain-landscape-picture-id517188688?k=20&m=517188688&s=612x612&w=0&h=i38qBm2P-6V4vZVEaMy_TaTEaoCMkYhvLCysE7yJQ5Q=",
-            //     status: false,
-            //   },
-            // ]
-
-            people
-              .filter((users) => {
-                users.name.toLowerCase().includes(search.toLowerCase());
-              })
-              .map((text, index) => (
-                <>
-                  <ListItem
-                    key={index}
-                    onClick={() => {
-                      setOnlineUser(text);
-                      dispatch(getUserId(""));
-                    }}
-                    disablePadding
-                  >
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <StyledBadge
-                          overlap="circular"
-                          anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "right",
-                          }}
-                          variant={text.status ? "dot" : null}
-                        >
-                          <Avatar alt="Remy Sharp" src={text.img} />
-                        </StyledBadge>
-                      </ListItemIcon>
-                      <ListItemText primary={text.name} />
-                    </ListItemButton>
-                  </ListItem>
-                </>
-              ))
-          }
+          {people
+            .filter((text) => {
+              if (search == "") {
+                return text;
+              } else if (
+                text.name.toLowerCase().includes(search.toLowerCase())
+              ) {
+                return text;
+              }
+            })
+            .map((text, index) => (
+              <>
+                <ListItem
+                  key={index}
+                  onClick={() => {
+                    setOnlineUser(text);
+                    dispatch(getUserId(""));
+                  }}
+                  disablePadding
+                >
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <StyledBadge
+                        overlap="circular"
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "right",
+                        }}
+                        variant={text.status ? "dot" : null}
+                      >
+                        <Avatar alt="Remy Sharp" src={text.img} />
+                      </StyledBadge>
+                    </ListItemIcon>
+                    <ListItemText primary={text.name} />
+                  </ListItemButton>
+                </ListItem>
+              </>
+            ))}
         </List>
       </Box>
     </>
@@ -270,16 +219,18 @@ function Messenger(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box
+    // sx={{ display: "flex" }}
+    >
       <CssBaseline />
       <Box>
         <AppBar
-          position="fixed"
+          position="none"
           sx={{
-            width: { sm: `calc(100% - 300px)` },
+            width: { sm: `calc(100% - 240px)` },
             ml: { sm: `${drawerWidth}px` },
             display: "flex",
-            top: "65px",
+            top: "63px",
           }}
         >
           <Toolbar>
@@ -358,7 +309,7 @@ function Messenger(props) {
               boxSizing: "border-box",
               width: drawerWidth,
               ml: "60px",
-              mt: "64px",
+              mt: { md: "64px", sm: "72px" },
             },
           }}
           open
@@ -371,6 +322,7 @@ function Messenger(props) {
           display: "flex",
           flexDirection: "column",
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          marginLeft: "auto",
         }}
       >
         <Box
@@ -379,7 +331,7 @@ function Messenger(props) {
             height: `calc(100vh - 150px)`,
             backgroundColor: "aliceblue",
             backgroundImage: `url(${bgimg})`,
-            height: "85vh",
+            height: "78vh",
             overflow: "scroll",
             "::-webkit-scrollbar": {
               display: "none",
@@ -389,7 +341,7 @@ function Messenger(props) {
           {msg.map((item, index) => (
             <Box
               sx={{
-                marginTop: "60px",
+                "& .MuiTypography-root": { borderRadius: "15px" },
               }}
             >
               <Messages key={index} a1={item} />

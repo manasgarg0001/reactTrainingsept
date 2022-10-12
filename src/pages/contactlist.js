@@ -96,11 +96,10 @@ const OnlineContactsHome = [
   },
 ];
 export default function AlignItemsList() {
-  const [sendUser, setSendUser] = useState();
   const navigate = useNavigate();
-  // const getOnlineUser = useSelector((state) => state.userId.value);
+
   const dispatch = useDispatch();
-  //console.log(getOnlineUser);
+
   return (
     <>
       <Box
@@ -139,7 +138,7 @@ export default function AlignItemsList() {
           <MoreHorizIcon sx={{ color: "#788292" }} />
         </Box>
       </Box>
-      <Card sx={{ borderRadius: "8px" }}>
+      <Card sx={{ borderRadius: "8px", cursor: "pointer" }}>
         <List>
           {OnlineContactsHome.map((item, index) => (
             <>
@@ -172,155 +171,6 @@ export default function AlignItemsList() {
               <Divider variant="inset" component="li" />
             </>
           ))}
-
-          {/* <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                variant="dot"
-              >
-                <Avatar alt="Remy Sharp" src={iconimg1} />
-              </StyledBadge>
-            </ListItemAvatar>
-            <ListItemText
-              onClick={() => navigate("/messenger")}
-              primary="Mohit"
-              sx={{
-                alignSelf: "center",
-                color: "#788292",
-                FontFamily: "Montserrat",
-              }}
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                variant="dot"
-              >
-                <Avatar alt="Remy Sharp" src={iconimg2} />
-              </StyledBadge>
-            </ListItemAvatar>
-            <ListItemText
-              onClick={() => navigate("/messenger")}
-              primary="Manu"
-              sx={{
-                alignSelf: "center",
-                color: "#788292",
-                FontFamily: "Montserrat",
-              }}
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                variant="dot"
-              >
-                <Avatar alt="Remy Sharp" src={iconimg3} />
-              </StyledBadge>
-            </ListItemAvatar>
-            <ListItemText
-              primary="Dhoni"
-              onClick={() => navigate("/messenger")}
-              sx={{
-                alignSelf: "center",
-                color: "#788292",
-                FontFamily: "Montserrat",
-              }}
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                variant="dot"
-              >
-                <Avatar alt="Remy Sharp" src={iconimg4} />
-              </StyledBadge>
-            </ListItemAvatar>
-            <ListItemText
-              primary="Sehwag"
-              onClick={() => navigate("/messenger")}
-              sx={{
-                alignSelf: "center",
-                color: "#788292",
-                FontFamily: "Montserrat",
-              }}
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                variant="dot"
-              >
-                <Avatar alt="Remy Sharp" src={iconimg5} />
-              </StyledBadge>
-            </ListItemAvatar>
-            <ListItemText
-              onClick={() => navigate("/messenger")}
-              primary="Pandya"
-              sx={{
-                alignSelf: "center",
-                color: "#788292",
-                FontFamily: "Montserrat",
-              }}
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                variant="dot"
-              >
-                <Avatar alt="Remy Sharp" src={iconimg6} />
-              </StyledBadge>
-            </ListItemAvatar>
-            <ListItemText
-              onClick={() => navigate("/messenger")}
-              primary="Rahul"
-              sx={{
-                alignSelf: "center",
-                color: "#788292",
-                FontFamily: "Montserrat",
-              }}
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem alignItems="flex-start">
-            <ListItemAvatar>
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                variant="dot"
-              >
-                <Avatar alt="Remy Sharp" src={iconimg7} />
-              </StyledBadge>
-            </ListItemAvatar>
-            <ListItemText
-              onClick={() => navigate("/messenger")}
-              primary="yuvraj"
-              sx={{
-                alignSelf: "center",
-                color: "#788292",
-                FontFamily: "Montserrat",
-              }}
-            />
-          </ListItem> */}
         </List>
       </Card>
     </>

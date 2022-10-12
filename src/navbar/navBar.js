@@ -18,20 +18,12 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import firebaseConfig from "../firebase";
 import LocalStorageService from "../util/localStorageService";
-import { useSelector } from "react-redux";
+
+import { useSelector, useDispatch } from "react-redux";
 const auth = getAuth();
 
-// const pages = [
-//   "Home",
-//   "Notification",
-//   "Watch",
-//   "MarketPlace",
-//   "Group",
-//   "Messenger",
-//   "Live",
-//   "Login",
-// ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Logout"];
 const pages = [
   { title: "Home", path: "/" },
   { title: "Notification", path: "/notification" },
@@ -76,7 +68,8 @@ const ResponsiveAppBar = () => {
         // An error happened.
       });
   };
-  // const user = useSelector((state) => state.user.userData);
+  const getUser = LocalStorageService.getCurrentUser();
+
   return (
     <AppBar position="relative" sx={{ backgroundColor: "white" }}>
       <Container maxWidth={false}>
@@ -159,8 +152,8 @@ const ResponsiveAppBar = () => {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src={img} />
-                {/* <div>{user.name}</div>
-                <div>{user.email}</div> */}
+                {/* <div>{getUser.displayName || getUser.firstName}</div>
+                <div>{getUser.email}</div> */}
               </IconButton>
             </Tooltip>
             <Menu
@@ -179,11 +172,22 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              <MenuItem sx={{ flexDirection: "column" }}>
+                <Typography
+                  variant="body1"
+                  sx={{ fontWeight: "bold", textAlign: "center" }}
+                >
+                  {getUser.displayName || getUser.firstName}
+                </Typography>
+                <Typography variant="body2">{getUser.email}</Typography>
+              </MenuItem>
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography onClick={Signoutfunc} textAlign="center">
-                    {setting}
-                  </Typography>
+                <MenuItem
+                  key={setting}
+                  onClick={handleCloseUserMenu}
+                  sx={{ justifyContent: "center" }}
+                >
+                  <Typography onClick={Signoutfunc}>{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>

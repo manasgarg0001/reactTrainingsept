@@ -4,10 +4,21 @@ import GridLayout from "./util/gridlayout";
 import MiniDrawer from "./navbar/sidebar";
 import Router1 from "./routers/router";
 import { useDispatch, useSelector } from "react-redux";
+import LocalStorageService from "./util/localStorageService";
+import { useEffect } from "react";
 
 function App() {
   // const count = useSelector((state) => state.counter.value);
   // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   return () => {
+  //     window.onbeforeunload = function () {
+  //       LocalStorageService.clearToken();
+  //       return "";
+  //     };
+  //   };
+  // }, []);
 
   return (
     <div className="App">
